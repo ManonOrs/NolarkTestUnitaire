@@ -28,3 +28,32 @@ MesTestsUnitaires.prototype.testsGetSanction = function() {
 getSanction(0.4));
  assertEquals('A partir de 0,8 g/l de sang', '6 points + 2 ans de prison + suspension 3 ans + stage de sensibilisation', getSanction(0.8));
 };
+
+MesTestsUnitaires.prototype.testsGetInt = function () {
+ /*:DOC +=
+ <input type="number" id="num_verre" value="1">
+ <input type="number" id="num_poids" value="100">
+ */
+ assertTrue('Test poids 100 Kg', 100 === getInt('#num_poids'));
+ assertTrue('Test 1 verre', 1 === getInt('#num_verre'));
+ window.document.querySelector('#num_verre').value = 'texte';
+ assertTrue('Test erreur saisie verre', 0 === getInt('#num_verre'));
+};
+
+
+MesTestsUnitaires.prototype.testsGetString = function () {
+ /*:DOC +=
+ <fieldset id="sexe">
+ <input type="radio" name="rd_sexe" id="rd_sexehomme" value="homme"
+ checked="checked">
+ <input type="radio" name="rd_sexe" id="rd_sexefemme" value="femme">
+ </fieldset>
+ */
+ assertTrue('Test bouton radio Homme',
+ 'homme' === getString('#sexe input[type="radio"]:checked'));
+ // Changement de sexe
+ window.document.querySelector('#rd_sexehomme').removeAttribute('checked');
+ window.document.querySelector('#rd_sexefemme').setAttribute('checked','checked');
+ assertTrue('Test bouton radio Femme',
+ 'femme' === getString('#sexe input[type="radio"]:checked'));
+};
