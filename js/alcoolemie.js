@@ -1,26 +1,3 @@
-import {recupValeur} from './remuneration.js';
-
-///**
-// * Listeners sur les inputs
-// * 
-// */
-//window.addEventListener('load', function () {
-//    // tabEvents est une collection d'évenements
-//    let tabEvents = ['keyup', 'click'];
-//
-//    // tabInputs est une collection de <input>
-//    let tabInputs = window.document.querySelectorAll('input[type="number"]');
-//
-//    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
-//    for (let i = 0; i < tabInputs.length; i++) {
-//        for (let j = 0; j < tabEvents.length; j++) {
-//            // Ajout d'un Listener sur tous les <input> sur les évènements listés dans tabEvents
-//            tabInputs[i].addEventListener(tabEvents[j], lancerCalcul);
-//        }
-//    }
-//});
-
-
 /**
 * Fonction qui retourne l'alcool pur ingéré en fonction du nombre
 * de verre
@@ -128,8 +105,8 @@ function getString(id) {
 function lancerCalcul(){
  // Déclaration et affectation des variables
     let sexe = getString('#resultats input[type="radio"]:checked');
-    let poids = recupValeur('#num_poids');
-    let nbVerres = recupValeur('#num_verre');
+    let poids = getInt('#num_poids');
+    let nbVerres = getInt('#num_verre');
     
     let alcoolemie = getAlcoolemie(sexe,poids,nbVerres);
     let amende = getAmende(alcoolemie);
@@ -145,30 +122,30 @@ function afficherAlcoolemie(alcoolemie,amende,sanction){
      * CSS définie dans simulateur.css
      * Si #remuneration (<h2 id='remuneration'></h2>) n'existe pas, on le créé */
     
-//    if (!elH2) {
-//        elH2 = window.document.createElement('h3');
-//        elH2.id = 'alcoolemie';
-//        window.document.querySelector('#test').appendChild(elH2);
-//    }
+    if (!elH2) {
+        elH2 = window.document.createElement('h3');
+        elH2.id = 'alcoolemie';
+        window.document.querySelector('#test').appendChild(elH2);
+    }
     
     let elH3 = window.document.querySelector('#amende');
-//    if (!elH3) {
-//        elH3 = window.document.createElement('h3');
-//        elH3.id = 'amende';
-//        window.document.querySelector('#test').appendChild(elH3);
-//    }
+    if (!elH3) {
+        elH3 = window.document.createElement('h3');
+        elH3.id = 'amende';
+        window.document.querySelector('#test').appendChild(elH3);
+    }
     
     let elH4 = window.document.querySelector('#sanction');
-//    if (!elH4) {
-//        elH4 = window.document.createElement('h3');
-//        elH4.id = 'sanction';
-//        window.document.querySelector('#test').appendChild(elH4);
-//    }
+    if (!elH4) {
+        elH4 = window.document.createElement('h3');
+        elH4.id = 'sanction';
+        window.document.querySelector('#test').appendChild(elH4);
+    }
     
     
     // Gestion de l'affichage
-        elH2.innerHTML = 'Alcoolémie ' + alcoolemie + ' g/l de sang';
-        elH3.innerHTML = 'Amende : ' + amende;
-        elH4.innerHTML = 'Sanction : ' + sanction;
+        window.document.querySelector('#alcoolemie').innerHTML = 'Alcoolémie ' + alcoolemie + ' g/l de sang';
+        window.document.querySelector('#amende').innerHTML = 'Amende : ' + amende;
+        window.document.querySelector('#sanction').innerHTML = 'Sanction : ' + sanction;
         
     }
