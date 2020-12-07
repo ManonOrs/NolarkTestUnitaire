@@ -102,3 +102,54 @@ function getString(id) {
  return window.document.querySelector(id).value;
 }
 
+function lancerCalcul(){
+    let sexef = '#rd_femme' ;
+    let sexeh = '#rd_homme';
+    let poids = getInt('#num_poids');
+    let nbVerres = getInt('#num_verres');
+    let sexe;    
+    if(sexef === getString('#sexe input[type="radio"]:checked')){
+        sexe = '#rd_femme';
+    }else{
+        sexe = '#rd_homme';
+    }
+    return getAlcoolemie(sexe, poids, nbVerres);
+}
+
+function afficherAlcoolemie(){
+    let elH2 = window.document.querySelector('#alcoolemie');
+    /* utilisation de #remuneration au lieu de #prime pour réutiliser les règles
+     * CSS définie dans simulateur.css
+     * Si #remuneration (<h2 id='remuneration'></h2>) n'existe pas, on le créé */
+    let sexef = '#rd_femme' ;
+    let sexeh = '#rd_homme';
+    let poids = getInt('#num_poids');
+    let nbVerres = getInt('#num_verres');
+    let sexe;    
+    if(sexef === getString('#sexe input[type="radio"]:checked')){
+        sexe = '#rd_femme';
+    }else{
+        sexe = '#rd_homme';
+    }
+    let alcoolemie = getAlcoolemie(sexe, poids, nbVerres);
+    
+    if (!elH2) {
+        elH2 = window.document.createElement('h3');
+        elH2.id = 'alcoolemie';
+        window.document.querySelector('#resultats').appendChild(elH2);
+    }
+    
+    let elH3 = window.document.querySelector('#emende');
+    if (!elH3) {
+        elH3 = window.document.createElement('h3');
+        elH3.id = 'amende';
+        window.document.querySelector('#resultats').appendChild(elH3);
+    }
+    
+    
+    // Gestion de l'affichage avec gestion particulière pour 0 et 1 accident
+        elH2.innerHTML = 'Alcoolémie ' + alcoolemie + ' g/l de sang';
+//        elH2.innerHTML = 'Amende : ' + alcoolemie + ' g/l de sang';
+        
+    }
+}
