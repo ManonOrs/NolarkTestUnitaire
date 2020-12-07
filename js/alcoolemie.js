@@ -1,3 +1,26 @@
+import {recupValeur} from './remuneration.js';
+
+///**
+// * Listeners sur les inputs
+// * 
+// */
+//window.addEventListener('load', function () {
+//    // tabEvents est une collection d'évenements
+//    let tabEvents = ['keyup', 'click'];
+//
+//    // tabInputs est une collection de <input>
+//    let tabInputs = window.document.querySelectorAll('input[type="number"]');
+//
+//    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
+//    for (let i = 0; i < tabInputs.length; i++) {
+//        for (let j = 0; j < tabEvents.length; j++) {
+//            // Ajout d'un Listener sur tous les <input> sur les évènements listés dans tabEvents
+//            tabInputs[i].addEventListener(tabEvents[j], lancerCalcul);
+//        }
+//    }
+//});
+
+
 /**
 * Fonction qui retourne l'alcool pur ingéré en fonction du nombre
 * de verre
@@ -103,53 +126,49 @@ function getString(id) {
 }
 
 function lancerCalcul(){
-    let sexef = '#rd_femme' ;
-    let sexeh = '#rd_homme';
-    let poids = getInt('#num_poids');
-    let nbVerres = getInt('#num_verres');
-    let sexe;    
-    if(sexef === getString('#sexe input[type="radio"]:checked')){
-        sexe = '#rd_femme';
-    }else{
-        sexe = '#rd_homme';
-    }
-    return getAlcoolemie(sexe, poids, nbVerres);
+ // Déclaration et affectation des variables
+    let sexe = getString('#resultats input[type="radio"]:checked');
+    let poids = recupValeur('#num_poids');
+    let nbVerres = recupValeur('#num_verre');
+    
+    let alcoolemie = getAlcoolemie(sexe,poids,nbVerres);
+    let amende = getAmende(alcoolemie);
+    let sanction = getSanction(alcoolemie);
+    
+    // Gestion de l'affichage de la prime en fonction du nombre d'accidents
+    afficherAlcoolemie(alcoolemie,amende,sanction);
 }
 
-function afficherAlcoolemie(){
+function afficherAlcoolemie(alcoolemie,amende,sanction){
     let elH2 = window.document.querySelector('#alcoolemie');
     /* utilisation de #remuneration au lieu de #prime pour réutiliser les règles
      * CSS définie dans simulateur.css
      * Si #remuneration (<h2 id='remuneration'></h2>) n'existe pas, on le créé */
-    let sexef = '#rd_femme' ;
-    let sexeh = '#rd_homme';
-    let poids = getInt('#num_poids');
-    let nbVerres = getInt('#num_verres');
-    let sexe;    
-    if(sexef === getString('#sexe input[type="radio"]:checked')){
-        sexe = '#rd_femme';
-    }else{
-        sexe = '#rd_homme';
-    }
-    let alcoolemie = getAlcoolemie(sexe, poids, nbVerres);
     
-    if (!elH2) {
-        elH2 = window.document.createElement('h3');
-        elH2.id = 'alcoolemie';
-        window.document.querySelector('#resultats').appendChild(elH2);
-    }
+//    if (!elH2) {
+//        elH2 = window.document.createElement('h3');
+//        elH2.id = 'alcoolemie';
+//        window.document.querySelector('#test').appendChild(elH2);
+//    }
     
-    let elH3 = window.document.querySelector('#emende');
-    if (!elH3) {
-        elH3 = window.document.createElement('h3');
-        elH3.id = 'amende';
-        window.document.querySelector('#resultats').appendChild(elH3);
-    }
+    let elH3 = window.document.querySelector('#amende');
+//    if (!elH3) {
+//        elH3 = window.document.createElement('h3');
+//        elH3.id = 'amende';
+//        window.document.querySelector('#test').appendChild(elH3);
+//    }
+    
+    let elH4 = window.document.querySelector('#sanction');
+//    if (!elH4) {
+//        elH4 = window.document.createElement('h3');
+//        elH4.id = 'sanction';
+//        window.document.querySelector('#test').appendChild(elH4);
+//    }
     
     
-    // Gestion de l'affichage avec gestion particulière pour 0 et 1 accident
+    // Gestion de l'affichage
         elH2.innerHTML = 'Alcoolémie ' + alcoolemie + ' g/l de sang';
-//        elH2.innerHTML = 'Amende : ' + alcoolemie + ' g/l de sang';
+        elH3.innerHTML = 'Amende : ' + amende;
+        elH4.innerHTML = 'Sanction : ' + sanction;
         
     }
-}
