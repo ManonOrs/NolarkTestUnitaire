@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+        <head>
+        <title>Casques Nolark : Sécurité et confort, nos priorités !</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="José GIL">
+        <meta name="description" content="Découvrez des casques moto dépassant même les exigences des tests de sécurité. Tous les casques Nolark au meilleur prix et avec en prime la livraison gratuite !">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/styles.css" rel="stylesheet" type="text/css">
+        <link href="../css/simulateur.css" rel="stylesheet" type="text/css">
+        <script src="../js/remuneration.js" type="text/javascript"></script>
+        <link rel="icon" href="../favicon.ico">
+    </head>
+    <body>
+        <header>
+            <picture>
+                <source media="(max-width: 576px)" srcset="../images/banniere_small.png">
+                <source srcset="../images/banniere.png">
+                <img src="../images/banniere.png" alt="Nolark : Protect your minds ! Cette bannière montre un 
+                     coucher de soleil avec une femme embrassant un homme réalisant en stoppie sur sa
+                     moto.">
+                <!-- Image basée sur la création originale de ShiftGraphiX sur Pixabay : 
+                    https://pixabay.com/fr/couple-stoppie-sportive-vélomoteur-3156613/ -->
+            </picture>
+            <nav>
+                <input type="checkbox">
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="route.html">Route</a></li>
+                    <li><a href="cross.html">Cross</a></li>
+                    <li><a href="piste.html">Piste</a></li>
+                    <li><a href="enfants.html">Enfants</a></li>
+                    <li><a href="nous-contacter.html">Nous contacter</a></li>
+                </ul>
+            </nav>
+        </header>
+    <body>
+        <section id="formulaire">
+            <h1>Simulateur de test alcoolemique :</h1>
+            <form id="form_simulateur" name="form_simulateur">
+                <fieldset id="resultats">
+                    <legend>Vos informations : </legend>
+                    <p><label for="num_ancien">Poid :</label> <input type="number" name="num_ancien" id="num_ancien" min="0" max="50" value="0"></p>
+                    <p><label for="num_s20">Sexe :</label> <input type="radio" id="sexeH" name="sexe" value="homme" checked>
+                    <label for="sexeH">Homme</label> <input type="radio" id="sexeF" name="sexe" value="femme">
+                    <label for="sexeF">Femme</label>
+                    <p><label for="num_xs">Nombre de verres bus :</label> <input type="number" name="num_xs" id="num_xs" min="0" max="9999" value="0"></p>
+                </fieldset>
+                <p id="controles"><input type="reset" name="rst_annuler" id="btn_annuler" value="Effacer les données"></p>
+            </form>
+            
+            
+            
+        </section>
+    </body>
+</html>
